@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>Python</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/desert.css" rel="stylesheet">
+    <script src="js/jquery-1.12.1.js"></script>
+    <style type="text/css">
+        .esf-container{
+            width: 950px;
+            margin: 30px auto;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function(){
+            $.get("md/python.md").success(function(data) {
+                var mdcontent = markdown.toHTML(data, 'Maruku');
+                $("#esf-content").html(mdcontent);
+                $("pre").addClass("prettyprint");
+                prettyPrint();
+            }); 
+        })
+    </script>
+</head>
+<body>
+    <div class="esf-container">
+        <ol class="breadcrumb">
+            <li><a href="summary.html">学习总结</a></li>
+            <li class="active">Python</li>
+        </ol>
+        <div class="esf-content" id="esf-content">
+            <!-- 插入内容 -->
+        </div>
+        <hr>
+        <nav>
+            <ul class="pager">
+                <li><a href="#">没有了</a></li>
+                <li><a href="#">X</a></li>
+            </ul>
+        </nav>
+    </div>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/markdown.js"></script>
+    <script src="js/prettify.js"></script>
+</body>
+</html>
