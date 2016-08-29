@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <title>Python</title>
+    <title>JSP</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +16,7 @@
     </style>
     <script type="text/javascript">
         $(function(){
-            $.get("md/python.md").success(function(data) {
+            $.get("md/jsp.md").success(function(data) {
                 var mdcontent = markdown.toHTML(data, 'Maruku');
                 $("#esf-content").html(mdcontent);
                 $("pre").addClass("prettyprint");
@@ -29,7 +29,7 @@
     <div class="esf-container">
         <ol class="breadcrumb">
             <li><a href="summary.html">学习总结</a></li>
-            <li class="active">Python</li>
+            <li class="active">JSP</li>
         </ol>
         <div class="esf-content" id="esf-content">
             <!-- 插入内容 -->
@@ -37,7 +37,7 @@
         <hr>
         <nav>
             <ul class="pager">
-                <li><a href="jsp.html">JSP</a></li>
+                <li><a href="python.html">Python</a></li>
                 <li><a href="#">X</a></li>
             </ul>
         </nav>

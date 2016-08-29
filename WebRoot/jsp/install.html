@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <title>Python</title>
+    <title>安装</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/desert.css" rel="stylesheet">
-    <script src="js/jquery-1.12.1.js"></script>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/desert.css" rel="stylesheet">
+    <script src="../js/jquery-1.12.1.js"></script>
     <style type="text/css">
         .esf-container{
             width: 950px;
@@ -16,20 +16,27 @@
     </style>
     <script type="text/javascript">
         $(function(){
-            $.get("md/python.md").success(function(data) {
+            $.get({url:"../md/jsp/install.md", async:false}).success(function(data) {
                 var mdcontent = markdown.toHTML(data, 'Maruku');
                 $("#esf-content").html(mdcontent);
-                $("pre").addClass("prettyprint");
+                $("pre").addClass("prettyprint lang-cpp");
                 prettyPrint();
             }); 
+            
+            //为超链接加上target='_blank'属性
+    		$('a[href^="http"]').each(function() {
+    			$(this).attr('target', '_blank');
+    		});
         })
     </script>
 </head>
 <body>
     <div class="esf-container">
         <ol class="breadcrumb">
-            <li><a href="summary.html">学习总结</a></li>
-            <li class="active">Python</li>
+            <li><a href="../summary.html">学习总结</a></li>
+            <li><a href="../jsp.html">JSP</a></li>
+            <li><a href="jstl.html">JSTL 标准标签库</a></li>
+            <li class="active">安装</li>
         </ol>
         <div class="esf-content" id="esf-content">
             <!-- 插入内容 -->
@@ -37,13 +44,13 @@
         <hr>
         <nav>
             <ul class="pager">
-                <li><a href="jsp.html">JSP</a></li>
                 <li><a href="#">X</a></li>
+                <li><a href="core.html">核心标签库</a></li>
             </ul>
         </nav>
     </div>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/markdown.js"></script>
-    <script src="js/prettify.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/markdown.min.js"></script>
+    <script src="../js/prettify.js"></script>
 </body>
 </html>

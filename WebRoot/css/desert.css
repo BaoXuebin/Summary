@@ -24,13 +24,14 @@ p {
 }
 
 /**
-* 无序列表和有序列表
+*
 */
 .esf-content ul li, .esf-content ol li{
 	font-size: 18px;
 	margin: 10px 45px;
 	font-family:SimSun;
 }
+
 
 /*
  * blockquote
@@ -46,7 +47,7 @@ blockquote p {
 }
 
 /*
- * 鍐呰仈浠ｇ爜鍧�
+ * 閸愬懓浠堟禒锝囩垳閸э拷
  */
 p code {
       background: #F5DFE3;
@@ -57,7 +58,7 @@ p code {
       border-radius: 4px; 
     }
 /*
- * 浠ｇ爜鍧�
+ * 
  */
 pre.prettyprint { display: block;width: 92%; background-color: #333; font-size: 16px;
             border-radius: 5px;word-break: break-all;
