@@ -1,4 +1,12 @@
 /* desert scheme ported from vim to google prettify */
+.esf-content textarea {
+	margin: 10px 20px 40px 40px;
+}
+
+.esf-content hr {
+	background-color: #E5E5E5;
+	height: 1px;
+}
 
 .esf-content table {
 	margin: 20px 40px;
@@ -46,9 +54,6 @@ blockquote p {
 	margin:0;
 }
 
-/*
- * 閸愬懓浠堟禒锝囩垳閸э拷
- */
 p code {
       background: #F5DFE3;
       color: #B75732;
