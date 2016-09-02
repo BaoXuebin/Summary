@@ -43,7 +43,7 @@
 			<h1>核心库标签</h1>
 			<hr>
 <pre><code>&lt;%
-    List<String> list = new ArrayList<String>();
+    List&lt;String&gt; list = new ArrayList&lt;String&gt;();
     list.add("上海");
     list.add("北京");
     list.add("杭州");

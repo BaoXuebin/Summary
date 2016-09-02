@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <title>核心库标签</title>
+    <title>Git</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/desert.css" rel="stylesheet">
-    <script src="../js/jquery-1.12.1.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/desert.css" rel="stylesheet">
+    <script src="js/jquery-1.12.1.js"></script>
     <style type="text/css">
         .esf-container{
             width: 950px;
-            margin: 30px auto;                                                                              
+            margin: 30px auto;
         }
     </style>
     <script type="text/javascript">
         $(function(){
-            $.get({url:"../md/jsp/core.md", async:false}).success(function(data) {
+            $.get("md/git.md").success(function(data) {
                 var mdcontent = markdown.toHTML(data, 'Maruku');
                 $("#esf-content").html(mdcontent);
                 $("pre").addClass("prettyprint");
@@ -28,10 +28,8 @@
 <body>
     <div class="esf-container">
         <ol class="breadcrumb">
-            <li><a href="../summary.html">学习总结</a></li>
-            <li><a href="../jsp.html">JSP</a></li>
-            <li><a href="jstl.html">JSTL 标准标签库</a></li>
-            <li class="active">核心库标签</li>
+            <li><a href="summary.html">学习总结</a></li>
+            <li class="active">Git</li>
         </ol>
         <div class="esf-content" id="esf-content">
             <!-- 插入内容 -->
@@ -39,13 +37,13 @@
         <hr>
         <nav>
             <ul class="pager">
-                <li><a href="install.html">安装</a></li>
-                <li><a href="core.html">#</a></li>
+                <li><a href="jsp.html">JSP</a></li>
+                <li><a href="#">X</a></li>
             </ul>
         </nav>
     </div>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/markdown.min.js"></script>
-    <script src="../js/prettify.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/markdown.js"></script>
+    <script src="js/prettify.js"></script>
 </body>
 </html>
