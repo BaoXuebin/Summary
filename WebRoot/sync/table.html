@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Table</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		.advance-apply-box {
+			width: 800px;
+			margin: 0 auto;
+		}
+		.advance-apply-box .title {
+			width: 100%;
+			text-align: center;
+			font-weight: bold;
+			font-size: 20px;
+			display: block;
+			line-height: 50px;
+		}
+
+		table {
+			width: 800px;
+		}
+
+		table .label {
+			font-weight: bold;
+			text-align: right;
+			width: 20%;
+		}
+
+		table .content {
+			width: 30%;
+			padding-left: 15px;
+			text-align: left;
+		}
+
+		.advance-apply-box .tableDiv {
+			border: 1px solid black;
+			border-radius: 3px;
+			padding: 15px 0;
+		}
+
+		#addButton {
+			margin: 10px auto;
+			width: 200px;
+			height: 30px;
+			border-radius: 15px;
+			background-color: red;
+			position: absolute;
+		}
+	</style>
+	<script type="text/javascript" src="res/jquery-1.12.1.js"></script>
+	<script type="text/javascript" src="res/changeitem.js"></script>
+</head>
+<body>
+<form>
+	<div class="advance-apply-box">
+		<h1 align="center">上海市著名商标认定预申请表</h1>
+		<div class="tableDiv" id="tableDiv-1">
+			<table border="0">
+				<tr>
+					<td class="label">申请日期</td>
+					<td class="content">2016-07-09</td>
+					<td class="label">批次</td>
+					<td class="content"> 21</td>
+			</table>
+		</div>
+		<span class="title">申请人基本信息</span>
+		<div class="tableDiv" id="tableDiv-1">
+			<table border="0">
+				<tr>
+					<td class="label">申请人名称</td>
+					<td class="content"><input type="text" name="applyDate"/></td>
+					<td class="label">统一社会信用代码</td>
+					<td class="content"><input type="text" name="applyDate"/></td>
+				</tr>
+				<tr>
+					<td class="label">工商注册号</td>
+					<td class="content"><input type="text" name="applyDate"/></td>
+					<td class="label">申请人住所</td>
+					<td class="content"><input type="text" name="applyDate"/></td>
+				</tr>
+				<tr>
+					<td class="label">所属监管所</td>
+					<td class="content"><input type="text" name="applyDate"/></td>
+					<td class="label">管理类别</td>
+					<td class="content"><input type="text" name="applyDate"/></td>
+				</tr>
+				<tr>
+					<td class="label">行业类别</td>
+					<td class="content"><input type="text" name="applyDate"/></td>
+					<td class="label">所属机关</td>
+					<td class="content"><input type="text" name="applyDate"/></td>
+				</tr>
+				<tr>
+					<td class="label">联系人</td>
+					<td class="content"><input type="text" name="applyDate"/></td>
+					<td class="label">联系电话</td>
+					<td class="content"><input type="text" name="applyDate"/></td>
+				</tr>
+				<tr>
+					<td class="label">联系邮箱</td>
+					<td class="content"><input type="text" name="applyDate"/></td>
+				</tr>
+				<tr>
+					<td class="label">联系地址</td>
+					<td class="content" colspan="3"><textarea style="width:546px;height:30px"></textarea></td>
+				</tr>
+			</table>
+		</div>
+
+		<span class="title">申请商标基本信息</span>
+		<div id="brandInfo-container">
+			<div class="tableDiv" id="applyBrandInfo_1">
+				<table border="0">
+					<tr>
+						<td class="label">商标注册证号</td>
+						<td class="content"><input type="text" name="applyDate"/></td>
+					</tr>
+					<tr>
+						<td class="label">商品名称</td>
+						<td class="content"><input type="text" name="applyDate"/></td>
+					</tr>
+					<tr>
+						<td class="label">商品注册日期</td>
+						<td class="content"><input type="text" name="applyDate"/></td>
+						<td class="label">商品注册类别</td>
+						<td class="content"><input type="text" name="applyDate"/></td>
+					</tr>
+					<tr>
+						<td class="label">核定使用商品/服务</td>
+						<td class="content"><input type="text" name="applyDate"/></td>
+						<td class="label">申请认定商品/服务</td>
+						<td class="content"><input type="text" name="applyDate"/></td>
+					</tr>
+					<tr>
+						<td class="label">商标变更情况</td>
+						<td class="content"><input type="radio" name="isChange" value="yes">是<input type="radio" name="isChange" value="no">否</td>
+						<td class="label">申请认定商品/服务</td>
+						<td class="content"><input type="text" name="applyDate"/></td>
+					</tr>
+					<tr>
+						<td class="label">商标变更前名义/地址/其他注册事项</td>
+						<td class="content" colspan="3"><textarea style="width:546px;height:30px"></textarea></td>
+					</tr>
+					<tr>
+						<td class="label">商标变更后名义/地址/其他注册事项</td>
+						<td class="content" colspan="3"><textarea style="width:546px;height:30px"></textarea></td>
+					</tr>
+					<tr>
+						<td class="label">商标续展情况</td>
+						<td class="content"><input type="radio" name="isChange" value="yes">是<input type="radio" name="isChange" value="no">否</td>
+						<td class="label">商标续展有效期</td>
+						<td class="content"><input type="text" name="applyDate"/></td>
+					</tr>
+					<tr>
+						<td class="label">注册商标图样</td>
+						<td class="content" colspan="3"><input type="file" name="brandDraft"/></td>
+					</tr>
+					<tr>
+						<td colspan="2" align="right" height="40px"><input type="button" id="addBtn" value="添加" onclick="addItem('applyBrandInfo_1')" /></td>
+						<td colspan="2" align="left" height="40px"><input type="button" id="delBtn" value="删除" onclick="delItem(this)" /></td>
+					</tr>
+				</table>
+			</div>
+			
+		</div>
+	</div>
+</form>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</body>
+</html>
