@@ -56,7 +56,8 @@ class GUI(CommandHandler):
 		self.search_image = PhotoImage(file='res/search.png').subsample(x='2', y='2')
 		self.reset_image = PhotoImage(file='res/reset.png').subsample(x='2', y='2')
 
-		self.query = Entry(self.root, font="Arial 12")
+		self.query_val = StringVar()
+		self.query = Entry(self.root, font="Arial 12", textvariable=self.query_val)
 		self.searchBtn = Button(self.root, image=self.search_image, text="search")
 		self.resetBtn = Button(self.root, image=self.reset_image, text="reset")
 		self.result = Text(self.root, state='normal', font="12")
@@ -82,19 +83,23 @@ class GUI(CommandHandler):
 		self.resetBtn.bind('<Button-1>', self.clearQuery)
 		self.searchBtn.bind('<Button-1>', self.queryResult)
 		self.query.bind('<Key-Return>', self.queryResult)
+		self.query.bind('<KeyPress-TAB>', self.hint)
 		self.root.mainloop()
 
 	def clearQuery(self, event):
-			self.query.delete(0, END)
-			self.query.insert(END, '')
+		self.query_val.set('')
+
+	# hint command
+	def hint(self, event):
+		print("I will be hint command")
+
 
 	def queryResult(self, event):
 		word = self.query.get().strip()
 		if word:
 			self.result.delete(0.0, END)
 			self.result.insert(END, self.handle(word))
-			# self.result.insert(END, '')
-			self.query.delete(0, END)
+			self.clearQuery()
 
 def main():
 	model_dict = {}
