@@ -54,5 +54,6 @@ def translate(word):
 	return result
 
 
+desc = '\\dict 切换至字典模式\n'
 model = '\dict'
 handle_func = translate
