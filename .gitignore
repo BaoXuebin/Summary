@@ -1,4 +1,6 @@
 *.class
+# python 编译文件
+*.pyc
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

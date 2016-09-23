@@ -9,6 +9,7 @@ import re
 sys.path.append('extension')
 import dict_
 import binary
+import ip
 
 class CommandHandler(object):
 
@@ -38,10 +39,14 @@ class CommandHandler(object):
 			return self.handle_func(word)
 
 	def do_HELP(self):
-		return '''[help]\n\\state 查看当前查询模式\n''' + dict_.desc + binary.desc
+		return '''[help]\n\\state 查看当前查询模式\n''' + dict_.desc + binary.desc + ip.desc
+
 
 	def do_STATE(self):
 		return '当前模式：' + self.model
+
+	def do_IP(self):
+		return ip.handle_func()
 
 
 
@@ -83,7 +88,6 @@ class GUI(CommandHandler):
 		self.resetBtn.bind('<Button-1>', self.clearQuery)
 		self.searchBtn.bind('<Button-1>', self.queryResult)
 		self.query.bind('<Key-Return>', self.queryResult)
-		self.query.bind('<KeyPress-TAB>', self.hint)
 		self.root.mainloop()
 
 	def clearQuery(self, event):
@@ -99,7 +103,7 @@ class GUI(CommandHandler):
 		if word:
 			self.result.delete(0.0, END)
 			self.result.insert(END, self.handle(word))
-			self.clearQuery()
+			self.clearQuery(event)
 
 def main():
 	model_dict = {}
