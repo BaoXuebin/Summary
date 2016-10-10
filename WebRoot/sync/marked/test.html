@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Marked in the browser</title>
+    <script src="lib/marked.min.js"></script>
+    <script src="lib/jquery.min.js"></script>
+</head>
+<body>
+    <div style="width: 100%;">
+        <textarea id="input" rows="5" cols="50" oninput="render()"></textarea>
+    </div>
+    <div id="output" style="width: 45%; display: inline-block;"></div>
+    <div id="output2" style="width: 45%; display: inline-block;"></div>
+    <script>
+        // 渲染
+        function render() {
+            var renderContent = marked($('#input').val());
+            $('#output').text(renderContent);
+            $('#output2').html(renderContent);
+        }
+
+        $(function() {
+            
+        });
+    </script>
+</body>
+</html>
