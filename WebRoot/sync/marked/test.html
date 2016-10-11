@@ -5,10 +5,40 @@
     <title>Marked in the browser</title>
     <script src="lib/marked.min.js"></script>
     <script src="lib/jquery.min.js"></script>
+    <style type="text/css">
+        .markdownBar {
+            width: 400px;
+            height: 30px;
+            padding: 5px;
+            background-color: #eee;
+        }
+        .markdownBar ul {
+            margin: 0;
+            padding: 0;
+        }
+        .markdownBar ul li{
+            list-style: none;
+            float: left;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            color: #000;
+        }
+        .markdownBar ul li:hover{
+            background-color: #fff;
+        }
+    </style>
 </head>
 <body>
     <div style="width: 100%;">
-        <textarea id="input" rows="5" cols="50" oninput="render()"></textarea>
+        <textarea id="input" rows="10" cols="60" oninput="render()"></textarea>
+        <div class="markdownBar">
+            <ul>
+                <a href="javascript:void(0)" onclick="appendToTextarea(this, 'input')"><li>#</li></a>
+                <a href="javascript:void(0)" onclick="appendToTextarea(this, 'input')"><li>h2</li></a>
+            </ul>
+        </div>
     </div>
     <div id="output" style="width: 45%; display: inline-block;"></div>
     <div id="output2" style="width: 45%; display: inline-block;"></div>
@@ -18,6 +48,89 @@
             var renderContent = marked($('#input').val());
             $('#output').text(renderContent);
             $('#output2').html(renderContent);
+        }
+
+        function appendToTextarea(element, id) {
+            var ta = $('#' + id);
+            var type = $(element).find("li").text();
+            var location = getSelection(ta[0]);
+            if (type == "#") {
+                replaceSelection("# "+ location.text, ta[0]);
+            }
+        }
+
+        //获取选择域位置，如果未选择便是光标位置
+        function getSelection(el) {
+            return (
+            ('selectionStart' in el && function () {
+                var l = el.selectionEnd - el.selectionStart;
+                return {
+                    start: el.selectionStart,
+                    end: el.selectionEnd,
+                    length: l,
+                    text: el.value.substr(el.selectionStart, l)
+                };
+            }) ||
+
+            (document.selection && function () {
+
+                el.focus();
+
+                var r = document.selection.createRange();
+                if (r === null) {
+                    return {
+                        start: 0,
+                        end: el.value.length,
+                        length: 0
+                    }
+                }
+
+                var re = el.createTextRange();
+                var rc = re.duplicate();
+                re.moveToBookmark(r.getBookmark());
+                rc.setEndPoint('EndToStart', re);
+
+                return {
+                    start: rc.text.length,
+                    end: rc.text.length + r.text.length,
+                    length: r.text.length,
+                    text: r.text
+                };
+            }) ||
+
+            function () {
+                return null;
+            }
+
+            )();
+        }
+
+        //替换选择
+        function replaceSelection(text, el) {
+
+            // var text = arguments[0] || '';
+
+            console.log(text);
+
+            return (
+
+            /* mozilla / dom 3.0 */ ('selectionStart' in el && function () {
+                el.value = el.value.substr(0, el.selectionStart) + text + el.value.substr(el.selectionEnd, el.value.length);
+                return this;
+            }) ||
+
+            /* exploder */ (document.selection && function () {
+                el.focus();
+                document.selection.createRange().text = text;
+                return this;
+            }) ||
+
+            /* browser not supported */function () {
+                el.value += text;
+                return jQuery(el);
+            }
+
+            )();
         }
 
         $(function() {
