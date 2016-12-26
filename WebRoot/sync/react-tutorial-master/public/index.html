@@ -12,12 +12,50 @@
     <script src="https://unpkg.com/remarkable@1.7.1/dist/remarkable.min.js"></script>
   </head>
   <body>
-    <div id="content1"></div>
-    <div id="clock"></div>
-    <div id="props"></div>
+    <div id="actionBar"></div>
+    <hr/>
+    <div id="contentPanel"></div>
+    <script type="text/javascript">
+      generate();
 
-    <!-- <script type="text/babel" src="scripts/tutorial7.js"></script> -->
-    <!-- <script type="text/babel" src="scripts/clock.js"></script> -->
-    <script type="text/babel" src="scripts/props.js"></script>
+      $('#actionBar button').click(function() {
+        $('#actionBar button').removeClass('current');
+        $(this).addClass('current');
+        var target = $(this).attr('ref');
+        $('#contentPanel .subPanel').hide();
+        $('#contentPanel #' + target).show();
+      });
+
+      $(function() {
+        $('#contentPanel .subPanel').hide();
+        $('#contentPanel .subPanel').last().show();
+        $('#actionBar button').last().addClass('current');
+      });
+
+      function generate() {
+        var types = [
+          'tick', 
+          'event',
+          'conditional',
+          'Mailbox'
+        ];
+
+        $('#actionBar').empty();
+        $('#contentPanel').empty();
+
+        for (var i in types) {
+          var type = types[i];
+          var btnHtml = '<button ref="'+type+'">'+type+'</button>';
+          var contentHtml = '<div id="'+type+'" class="subPanel"></div>';
+          $('#actionBar').append(btnHtml);
+          $('#contentPanel').append(contentHtml);
+        }
+      }
+    </script>
+    <!-- <script type="text/babel" src="scripts/tutorial7.js"></script>
+    <script type="text/babel" src="scripts/jsx01.js"></script> -->
+    <script type="text/babel" src="scripts/tick.js?t=113"></script>
+    <script type="text/babel" src="scripts/event.js"></script>
+    <script type="text/babel" src="scripts/conditional.js?t=33"></script>
   </body>
 </html>
