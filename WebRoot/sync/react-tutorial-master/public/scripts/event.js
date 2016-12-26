@@ -1,7 +1,6 @@
 // preventDefault
 // (handleClick) onClick => camelCase 
-
-class Light extends React.Component {
+function Light(props) {
 	render() {
 		return (
 			// (handleClick) onClick => camelCase 
@@ -34,7 +33,7 @@ class Toggle extends React.Component {
 				<button onClick={this.handleClick}>
 					{this.state.isToggleOn ? 'ON' : 'OFF'}
 				</button>
-				<Light state={this.state.isToggleOn} />
+				<Light props={this.state.isToggleOn} />
 			</div>
 		);
 	}
