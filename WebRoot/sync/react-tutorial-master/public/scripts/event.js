@@ -3,7 +3,6 @@
 function Light(props) {
 	render() {
 		return (
-			// (handleClick) onClick => camelCase 
 			<span>
 				   {this.props.state ? '亮' : '灭'}
 			</span>
