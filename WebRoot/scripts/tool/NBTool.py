@@ -10,6 +10,7 @@ sys.path.append('extension')
 import dict_
 import binary
 import ip
+import rgbHex
 
 class CommandHandler(object):
 
@@ -19,10 +20,10 @@ class CommandHandler(object):
 		self.handle_func = model_dict.get('\dict')
 
 	def handle_next(self, word):
-		if word in self.model_dict.keys():
-			self.model = word
-			self.handle_func = self.model_dict.get(word)
-			return('已切换至%s模式' % word)
+		if word.upper() in self.model_dict.keys():
+			self.model = word.upper()
+			self.handle_func = self.model_dict.get(self.model)
+			return('已切换至%s模式' % self.model)
 		else:
 			return("未知指令：" + word)
 
@@ -38,8 +39,9 @@ class CommandHandler(object):
 		else:
 			return self.handle_func(word)
 
+	# 下面的方法即时命令的处理方法
 	def do_HELP(self):
-		return '''[help]\n\\state 查看当前查询模式\n''' + dict_.desc + binary.desc + ip.desc
+		return '''[help]\n\\state 查看当前查询模式\n''' + dict_.desc + binary.toString() + ip.desc + rgbHex.exports.get('desc')
 
 
 	def do_STATE(self):
@@ -107,9 +109,14 @@ class GUI(CommandHandler):
 
 def main():
 	model_dict = {}
-	model_dict[dict_.model] = dict_.handle_func
-	model_dict[binary.model] = binary.handle_func
-	
+	temp_dict = {}
+	temp_dict[dict_.model] = dict_.handle_func
+	temp_dict[binary.model] = binary.handle_func
+	temp_dict = dict(temp_dict, **rgbHex.exports.get('modelMap'))
+	for model in temp_dict.keys():
+		model_dict[model.upper()] = temp_dict[model]
+	temp_dict = {}
+
 	gui = GUI(model_dict)
 	gui.show()
 

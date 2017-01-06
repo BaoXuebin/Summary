@@ -18,8 +18,8 @@ def handle(word):
 	else: # 不是数字
 		return "%s 不是数字类型" % word
 
+def toString():
+	return '\\binary: 十进制转二进制\n'
 
-
-desc = '\\binary: 二进制模式\n'
 model = r'\binary'
 handle_func = handle
