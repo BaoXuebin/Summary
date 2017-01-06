@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>React</title>
+    <style type="text/css">
+         section.preview {
+            width: 100px;
+            height: 61px;
+            border: 2px gray solid;
+            float: left;
+            margin: 10px;
+            padding: 15px;
+            border-radius: 5px;
+            position: relative;
+            cursor: pointer;
+         }
+
+         section.display {
+            width: 500px;
+            height: 300px;
+            border: 2px gray solid;
+            margin: 10px auto;
+            padding: 15px;
+            border-radius: 5px;
+            position: relative;
+         }
+
+         section .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-family: 'Arial';
+            font-size: 12px;
+         }
+
+         .sectionList {
+            width: 300px;
+         }
+    </style>
+    <script type="text/javascript" src="react.js"></script>
+    <script type="text/javascript" src="react-dom.js"></script>
+    <script type="text/javascript" src="browser.min.js"></script>
+    <script type="text/javascript" src="jquery.min.js"></script>
+</head>
+<body>
+    <div id="example1"></div>
+
+<script type="text/babel">
+class AddButton extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+        this.props.onUserClick();
+    }
+
+    render() {
+        return (
+            <button onClick={this.handleClick}>添加</button>
+        );
+    }
+}
+
+class Section extends React.Component {
+    constructor(props) {
+        super(props);
+        this.id = this.props.id;
+        this.handleDelete = this.handleDelete.bind(this);
+    }
+
+    handleDelete() {
+        this.props.onUserDelete(this.id);
+    }
+
+    render() {
+        return (
+            <section id={this.props.id} className={this.props.className} style={{background: this.props.color}}>
+                {this.props.value}
+                <a className="close" onClick={this.handleDelete}>delete</a>
+            </section>
+        );
+    }
+}
+
+class ShowSection extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <section className='display'>
+                {this.props.value}
+                <a className="close" onClick={this.handleDelete}>delete</a>
+            </section>
+        );
+    }
+}
+
+class SectionList extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            list: this.props.content
+        };
+        this.handleDelete = this.handleDelete.bind(this);
+    }
+
+    handleDelete(id) {
+        var list = this.state.list;
+        var targetId = -1;
+        for (var i in list) {
+            if (list[i].key === id) {
+                targetId = i;
+            }
+        }
+        list.splice(targetId,1);
+        this.setState({
+            list: list
+        });
+    }
+
+    render() {
+        const handleDelete = this.handleDelete;
+        const sections = this.state.list.map(function(section) {
+            return (
+                <Section key={section.key} className='preview' id={section.key} value={section.value}
+                color={section.color} 
+                onUserDelete={handleDelete} />
+            );
+        });
+        return (
+            <div>
+                {sections}
+            </div>
+        );
+    }
+}
+
+class SectionContainer extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            list: []
+        };
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+        // 更新list
+        // { key id value color}
+        var colors = ['red', 'blue', 'yellow', 'gray', 'white', 'black', 'pink'];
+        var color = colors[Math.ceil(Math.random()*colors.length) - 1];
+        var id = this.state.list.length;
+        if (id > 0) {
+            id = this.state.list[id-1].key + 1;
+        }
+        
+        this.state.list.push({key: id, id: id, color: color, value: '第'+id+'个section'});
+        this.setState({
+            list: this.state.list
+        });
+    }
+
+    render() {
+        return (
+            <div>
+                <AddButton onUserClick={this.handleClick}/>
+                <div className='sectionList'>
+                    <SectionList content={this.state.list} />
+                </div>
+                <div>
+                    <Section className='display'/>
+                </div>
+            </div>
+        );
+    }
+}
+
+
+ReactDOM.render(
+    <SectionContainer />,
+    $('#example1')[0]
+);
+</script>
+</body>
+</html>
