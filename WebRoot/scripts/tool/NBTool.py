@@ -16,8 +16,8 @@ class CommandHandler(object):
 
 	def __init__(self, model_dict={}):
 		self.model_dict = model_dict
-		self.model = '\dict'
-		self.handle_func = model_dict.get('\dict')
+		self.model = '\DICT'
+		self.handle_func = model_dict.get(self.model)
 
 	def handle_next(self, word):
 		if word.upper() in self.model_dict.keys():

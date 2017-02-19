@@ -39,6 +39,7 @@ def getByBrowser(url):
 	return result
 	
 def translate(word):
+	print(word)
 	query_url = '%skeyfrom=%s&key=%s&type=data&doctype=json&version=1.1&only=%s&q=%s' % (url, keyfrom, key, only, parse.quote(word))
 	result = getByBrowser(query_url)
 	strs = json.loads(result)
